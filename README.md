@@ -44,3 +44,29 @@ function mytheme_disable_quicktags_on_excerpt( $settings ) {
 }
 add_filter( 'ape_editor_settings', 'mytheme_disable_quicktags_on_excerpt' );
 ```
+
+### Filter: ape_post_types
+
+Control the post types that should get the Advanced Post Excerpt meta box.
+
+<dl>
+	<dt>(array) <code>$post_types</code></dt>
+	<dd>Post types affected by Advanced Post Excerpt.</dd>
+</dl>
+
+#### Example
+
+If you'd only want the native "post" post type to use Advanced Post Excerpt, you could add the following to your theme's functions.php file:
+
+```php
+/**
+ * Restrict Advanced Post Excerpt to the "post" post type.
+ *
+ * @param array $post_types Post types affected by Advanced Post Excerpt.
+ * @return array A restricted version of $post_types containing only "post".
+ */
+function mytheme_restrict_ape_post_types( $post_types ) {
+	return array( 'post' );
+}
+add_filter( 'ape_post_types', 'mytheme_restrict_ape_post_types' );
+```

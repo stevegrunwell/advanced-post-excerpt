@@ -29,6 +29,13 @@ function ape_replace_postexcerpt_meta_box() {
 		}
 	}
 
+	/**
+	 * Control the post types that should get the Advanced Post Excerpt meta box.
+	 *
+	 * @param array $post_types Post types affected by Advanced Post Excerpt.
+	 */
+	$post_types = apply_filters( 'ape_post_types', $post_types );
+
 	// Remove the default postexcerpt meta box.
 	remove_meta_box( 'postexcerpt', $post_types, 'normal' );
 
