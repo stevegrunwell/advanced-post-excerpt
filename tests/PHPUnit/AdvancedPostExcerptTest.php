@@ -13,13 +13,27 @@ use WP_Mock as M;
 class AdvancedPostExcerptTest extends TestCase {
 
 	public function test_ape_replace_postexcerpt_meta_box() {
-		$this->markTestIncomplete( 'Function does not yet support post types.' );
+		M::wpFunction( 'get_post_types', array(
+			'times'  => 1,
+			'args'   => array( null, 'names' ),
+			'return' => array( 'post', 'page' ),
+		) );
 
-		$post_types = array( 'post' );
+		M::wpFunction( 'post_type_supports', array(
+			'times'  => 1,
+			'args'   => array( 'post', 'excerpt' ),
+			'return' => true,
+		) );
+
+		M::wpFunction( 'post_type_supports', array(
+			'times'  => 1,
+			'args'   => array( 'page', 'excerpt' ),
+			'return' => false,
+		) );
 
 		M::wpFunction( 'remove_meta_box', array(
 			'times'  => 1,
-			'args'   => array( 'postexcerpt', $post_types, 'normal' ),
+			'args'   => array( 'postexcerpt', array( 'post' ), 'normal' ),
 		) );
 
 		M::wpFunction( 'add_meta_box', array(
@@ -28,7 +42,7 @@ class AdvancedPostExcerptTest extends TestCase {
 				'postexcerpt',
 				'Excerpt',
 				'ape_post_excerpt_meta_box',
-				$post_types,
+				array( 'post' ),
 				'normal',
 				'high',
 			),

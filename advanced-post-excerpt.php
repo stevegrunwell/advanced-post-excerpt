@@ -20,8 +20,27 @@
  * @todo Add support for additional post types.
  */
 function ape_replace_postexcerpt_meta_box() {
-	remove_meta_box( 'postexcerpt', 'post', 'normal' );
-	add_meta_box( 'postexcerpts', __( 'Excerpt' ), 'ape_post_excerpt_meta_box', 'post', 'normal', 'high' );
+	$post_types = array();
+
+	// Get all the post types that support excerpts.
+	foreach ( get_post_types( null, 'names' ) as $post_type ) {
+		if ( post_type_supports( $post_type, 'excerpt' ) ) {
+			$post_types[] = $post_type;
+		}
+	}
+
+	// Remove the default postexcerpt meta box.
+	remove_meta_box( 'postexcerpt', $post_types, 'normal' );
+
+	// Register our new meta box.
+	add_meta_box(
+		'postexcerpt',
+		__( 'Excerpt' ),
+		'ape_post_excerpt_meta_box',
+		$post_types,
+		'normal',
+		'high'
+	);
 }
 add_action( 'add_meta_boxes', 'ape_replace_postexcerpt_meta_box' );
 
