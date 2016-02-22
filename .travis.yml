@@ -7,7 +7,7 @@ php:
 env:
   global:
     - WP_VERSION=master
-    - WP_VERSION=4.2
+    - WP_VERSION=4.4
 
 before_script:
   - composer install --prefer-source
@@ -16,8 +16,6 @@ before_script:
 script:
   - ./vendor/bin/phpunit --coverage-clover build/logs/clover.xml
   - ./vendor/bin/test-reporter
-  - ./vendor/bin/phpcs --config-set installed_paths ./vendor/wp-coding-standards/wpcs
-  - ./vendor/bin/phpcs
 
 cache:
   directories:
