@@ -42,7 +42,7 @@ function ape_replace_postexcerpt_meta_box() {
 	// Register our new meta box.
 	add_meta_box(
 		'postexcerpt',
-		__( 'Excerpt' ),
+		_x( 'Excerpt', 'meta box heading', 'advanced-post-excerpt' ),
 		'ape_post_excerpt_meta_box',
 		$post_types,
 		'normal',
