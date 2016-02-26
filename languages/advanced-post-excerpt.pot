@@ -14,7 +14,7 @@ msgstr ""
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "X-Generator: grunt-wp-i18n 0.5.4\n"
 
-#: advanced-post-excerpt.php:45 dist/advanced-post-excerpt.php:45
+#: dist/advanced-post-excerpt.php:45
 msgid "Excerpt"
 msgstr ""
 
@@ -38,4 +38,9 @@ msgstr ""
 
 #. Author URI of the plugin/theme
 msgid "https://stevegrunwell.com"
+msgstr ""
+
+#: advanced-post-excerpt.php:43
+msgctxt "meta box heading"
+msgid "Excerpt"
 msgstr ""
