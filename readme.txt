@@ -23,9 +23,30 @@ Advanced Post Excerpts is designed to change that, by giving your editors an eas
 2. Activate the plugin through the WordPress "Plugins" screen.
 
 
+== Frequently-Asked Questions ==
+
+= Can I limit the post types that get the advanced editor? =
+
+Absolutely! Before the native "Excerpt" meta box is overridden, Advanced Post Excerpt passes an array of post types to the `ape_post_types` filter.
+
+If, for instance, you only want the native "post" post type to use Advanced Post Excerpt, you can add the following to your theme's functions.php file:
+
+	/**
+	 * Restrict Advanced Post Excerpt to the "post" post type.
+	 *
+	 * @param array $post_types Post types affected by Advanced Post Excerpt.
+	 * @return array A restricted version of $post_types containing only "post".
+	 */
+	function mytheme_restrict_ape_post_types( $post_types ) {
+		return array( 'post' );
+	}
+	add_filter( 'ape_post_types', 'mytheme_restrict_ape_post_types' );
+
+
 == Screenshots ==
 
 1. The Advanced Post Excerpt meta box, replacing the standard WordPress post excerpt.
+
 
 == Changelog ==
 
