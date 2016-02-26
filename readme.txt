@@ -16,6 +16,8 @@ Replace the default Post Excerpt meta box with a superior editing experience.
 
 Advanced Post Excerpts is designed to change that, by giving your editors an easy, intuitive interface for writing great post excerpts.
 
+For complete details and/or to contribute to ongoing development, please [visit this project on GitHub](https://github.com/stevegrunwell/advanced-post-excerpt).
+
 
 == Installation ==
 
