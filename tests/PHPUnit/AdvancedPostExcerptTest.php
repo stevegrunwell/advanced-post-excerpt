@@ -48,7 +48,7 @@ class AdvancedPostExcerptTest extends TestCase {
 			),
 		) );
 
-		M::wpPassthruFunction( '__', array(
+		M::wpPassthruFunction( '_x', array(
 			'times'  => 1,
 		) );
 
@@ -91,7 +91,7 @@ class AdvancedPostExcerptTest extends TestCase {
 			),
 		) );
 
-		M::wpPassthruFunction( '__', array(
+		M::wpPassthruFunction( '_x', array(
 			'times'  => 1,
 		) );
 
