@@ -1,0 +1,41 @@
+# Copyright (C) 2016 Steve Grunwell
+# This file is distributed under the MIT.
+msgid ""
+msgstr ""
+"Project-Id-Version: Advanced Post Excerpt 0.1.0\n"
+"Report-Msgid-Bugs-To: "
+"https://wordpress.org/support/plugin/advanced-post-excerpt\n"
+"POT-Creation-Date: 2016-02-26 18:36:15+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2016-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"X-Generator: grunt-wp-i18n 0.5.4\n"
+
+#: advanced-post-excerpt.php:45 dist/advanced-post-excerpt.php:45
+msgid "Excerpt"
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "Advanced Post Excerpt"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "https://github.com/stevegrunwell/advanced-post-excerpt"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"Replace the default Post Excerpt meta box with a superior editing "
+"experience."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Steve Grunwell"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "https://stevegrunwell.com"
+msgstr ""
