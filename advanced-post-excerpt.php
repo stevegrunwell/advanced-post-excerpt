@@ -16,8 +16,6 @@
 
 /**
  * Replace the default 'postexcerpt' meta box.
- *
- * @todo Add support for additional post types.
  */
 function ape_replace_postexcerpt_meta_box() {
 	$post_types = array();
