@@ -1,11 +1,11 @@
 === Advanced Post Excerpt ===
-Contributors: stevegrunwell
-Tags: excerpts, wysiwyg, tinymce
+Contributors:      stevegrunwell
+Tags:              excerpts, wysiwyg, tinymce
 Requires at least: 4.4
-Tested up to: 4.4.2
-Stable tag: 0.1.0
-License: MIT
-License URI: https://opensource.org/licenses/MIT
+Tested up to:      4.4.2
+Stable tag:        0.1.0
+License:           MIT
+License URI:       https://opensource.org/licenses/MIT
 
 Replace the default Post Excerpt meta box with a superior editing experience.
 
