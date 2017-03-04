@@ -15,6 +15,14 @@
  */
 
 /**
+ * Load the plugin textdomain.
+ */
+function ape_load_plugin_textdomain() {
+	load_plugin_textdomain( 'advanced-post-excerpt', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
+}
+add_action( 'init', 'ape_load_plugin_textdomain' );
+
+/**
  * Replace the default 'postexcerpt' meta box.
  */
 function ape_replace_postexcerpt_meta_box() {

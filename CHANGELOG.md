@@ -5,6 +5,10 @@ All notable changes to this project will be documented in this file, according t
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 
+## [Unreleased]
+
+* Fixed localization by adding missing [`load_plugin_textdomain()`](https://developer.wordpress.org/reference/functions/load_plugin_textdomain/) call ([#3]).
+
 ## [0.2.0] - 2017-03-04
 
 * Upgraded Composer dependencies
@@ -32,3 +36,4 @@ remove_filter( 'teeny_mce_buttons', 'ape_remove_alignment_buttons_from_excerpt',
 [0.1.0]: https://github.com/stevegrunwell/advanced-post-excerpt/releases/tag/v0.1.0
 [#1]: https://github.com/stevegrunwell/advanced-post-excerpt/issues/1
 [#2]: https://github.com/stevegrunwell/advanced-post-excerpt/issues/2
+[#3]: https://github.com/stevegrunwell/advanced-post-excerpt/issues/3
