@@ -6,6 +6,7 @@ module.exports = function(grunt) {
 				src: [
 					'languages/*',
 					'advanced-post-excerpt.php',
+					'CHANGELOG.md',
 					'LICENSE.md',
 					'readme.txt'
 				],
