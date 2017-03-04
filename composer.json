@@ -1,17 +1,25 @@
 {
+    "name": "stevegrunwell/advanced-post-excerpt",
+    "description": "Replace the default Post Excerpt meta box with a superior editing experience.",
+    "type": "wordpress-plugin",
+    "license": "MIT",
     "authors": [
         {
-            "name" : "Steve Grunwell",
+            "name": "Steve Grunwell",
             "email": "steve@stevegrunwell.com",
             "homepage": "https://stevegrunwell.com"
         }
     ],
+    "support": {
+        "source": "https://github.com/stevegrunwell/advanced-post-excerpt",
+        "issues": "https://github.com/stevegrunwell/advanced-post-excerpt/issues"
+    },
     "require-dev": {
         "stevegrunwell/wp-enforcer": "dev-master",
         "10up/wp_mock": "1.0.x-dev",
         "codeclimate/php-test-reporter": "dev-master"
     },
-    "events": {
+    "scripts": {
         "post-install-cmd": [
             "wp-enforcer"
         ],
