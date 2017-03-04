@@ -25,7 +25,7 @@ For complete details and/or to contribute to ongoing development, please [visit 
 2. Activate the plugin through the WordPress "Plugins" screen.
 
 
-== Frequently-Asked Questions ==
+== Frequently Asked Questions ==
 
 = Can I limit the post types that get the advanced editor? =
 
