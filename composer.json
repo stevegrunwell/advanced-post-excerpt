@@ -2,7 +2,8 @@
     "authors": [
         {
             "name" : "Steve Grunwell",
-            "email": "steve@stevegrunwell.com"
+            "email": "steve@stevegrunwell.com",
+            "homepage": "https://stevegrunwell.com"
         }
     ],
     "require-dev": {
