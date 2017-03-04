@@ -18,14 +18,7 @@
  * Replace the default 'postexcerpt' meta box.
  */
 function ape_replace_postexcerpt_meta_box() {
-	$post_types = array();
-
-	// Get all the post types that support excerpts.
-	foreach ( get_post_types( null, 'names' ) as $post_type ) {
-		if ( post_type_supports( $post_type, 'excerpt' ) ) {
-			$post_types[] = $post_type;
-		}
-	}
+	$post_types = get_post_types_by_support( 'excerpt' );
 
 	/**
 	 * Control the post types that should get the Advanced Post Excerpt meta box.
