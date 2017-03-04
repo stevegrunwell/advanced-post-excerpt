@@ -15,6 +15,7 @@ before_script:
   - mkdir -p build/logs
 
 script:
+  - ./vendor/bin/phpcs --standard=phpcs.xml ./
   - ./vendor/bin/phpunit --coverage-clover build/logs/clover.xml
   - ./vendor/bin/test-reporter
 
