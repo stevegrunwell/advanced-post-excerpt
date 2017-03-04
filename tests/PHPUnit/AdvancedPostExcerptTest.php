@@ -13,27 +13,14 @@ use WP_Mock as M;
 class AdvancedPostExcerptTest extends TestCase {
 
 	public function test_ape_replace_postexcerpt_meta_box() {
-		M::userFunction( 'get_post_types', array(
+		M::userFunction( 'get_post_types_by_support', array(
 			'times'  => 1,
-			'args'   => array( null, 'names' ),
 			'return' => array( 'post', 'page' ),
-		) );
-
-		M::userFunction( 'post_type_supports', array(
-			'times'  => 1,
-			'args'   => array( 'post', 'excerpt' ),
-			'return' => true,
-		) );
-
-		M::userFunction( 'post_type_supports', array(
-			'times'  => 1,
-			'args'   => array( 'page', 'excerpt' ),
-			'return' => false,
 		) );
 
 		M::userFunction( 'remove_meta_box', array(
 			'times'  => 1,
-			'args'   => array( 'postexcerpt', array( 'post' ), 'normal' ),
+			'args'   => array( 'postexcerpt', array( 'post', 'page' ), 'normal' ),
 		) );
 
 		M::userFunction( 'add_meta_box', array(
@@ -42,58 +29,31 @@ class AdvancedPostExcerptTest extends TestCase {
 				'postexcerpt',
 				'Excerpt',
 				'ape_post_excerpt_meta_box',
-				array( 'post' ),
+				array( 'post', 'page' ),
 				'normal',
 				'high',
 			),
 		) );
 
-		M::passthruFunction( '_x', array(
-			'times'  => 1,
-		) );
+		M::passthruFunction( '_x' );
 
 		ape_replace_postexcerpt_meta_box();
 	}
 
 	public function test_ape_replace_postexcerpt_meta_box_uses_filter() {
-		M::userFunction( 'get_post_types', array(
-			'times'  => 1,
-			'args'   => array( null, 'names' ),
+		M::userFunction( 'get_post_types_by_support', array(
 			'return' => array( 'post', 'page' ),
 		) );
 
-		M::userFunction( 'post_type_supports', array(
-			'times'  => 1,
-			'args'   => array( 'post', 'excerpt' ),
-			'return' => true,
-		) );
-
-		M::userFunction( 'post_type_supports', array(
-			'times'  => 1,
-			'args'   => array( 'page', 'excerpt' ),
-			'return' => true,
-		) );
-
 		M::userFunction( 'remove_meta_box', array(
-			'times'  => 1,
-			'args'   => array( 'postexcerpt', array( 'post' ), 'normal' ),
+			'args'   => array( '*', array( 'post' ), '*' ),
 		) );
 
 		M::userFunction( 'add_meta_box', array(
-			'times'  => 1,
-			'args'   => array(
-				'postexcerpt',
-				'Excerpt',
-				'ape_post_excerpt_meta_box',
-				array( 'post' ),
-				'normal',
-				'high',
-			),
+			'args'   => array( '*', '*', '*', array( 'post' ), '*', '*' ),
 		) );
 
-		M::passthruFunction( '_x', array(
-			'times'  => 1,
-		) );
+		M::passthruFunction( '_x' );
 
 		M::onFilter( 'ape_post_types' )->with( array( 'post', 'page' ) )->reply( array( 'post' ) );
 
