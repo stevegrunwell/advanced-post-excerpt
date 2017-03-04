@@ -17,6 +17,7 @@ module.exports = function(grunt) {
 			target: {
 				options: {
 					domainPath: 'languages/',
+					exclude: ['dist/*', 'node_modules/*', 'plugin-repo-assets/*', 'tests/*', 'vendor/*'],
 					mainFile: 'advanced-post-excerpt.php',
 					type: 'wp-plugin',
 					updateTimestamp: false,
