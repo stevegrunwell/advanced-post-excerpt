@@ -11,10 +11,12 @@
         "phpunit/phpunit": "^5.2",
         "codeclimate/php-test-reporter": "^0.3.0"
     },
-    "post-install-cmd": [
-    	"wp-enforcer"
-    ],
-    "post-update-cmd": [
-    	"wp-enforcer"
-    ]
+    "events": {
+        "post-install-cmd": [
+            "wp-enforcer"
+        ],
+        "post-update-cmd": [
+            "wp-enforcer"
+        ]
+    }
 }
