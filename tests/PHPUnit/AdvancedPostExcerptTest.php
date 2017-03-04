@@ -13,87 +13,47 @@ use WP_Mock as M;
 class AdvancedPostExcerptTest extends TestCase {
 
 	public function test_ape_replace_postexcerpt_meta_box() {
-		M::wpFunction( 'get_post_types', array(
+		M::userFunction( 'get_post_types_by_support', array(
 			'times'  => 1,
-			'args'   => array( null, 'names' ),
 			'return' => array( 'post', 'page' ),
 		) );
 
-		M::wpFunction( 'post_type_supports', array(
+		M::userFunction( 'remove_meta_box', array(
 			'times'  => 1,
-			'args'   => array( 'post', 'excerpt' ),
-			'return' => true,
+			'args'   => array( 'postexcerpt', array( 'post', 'page' ), 'normal' ),
 		) );
 
-		M::wpFunction( 'post_type_supports', array(
-			'times'  => 1,
-			'args'   => array( 'page', 'excerpt' ),
-			'return' => false,
-		) );
-
-		M::wpFunction( 'remove_meta_box', array(
-			'times'  => 1,
-			'args'   => array( 'postexcerpt', array( 'post' ), 'normal' ),
-		) );
-
-		M::wpFunction( 'add_meta_box', array(
+		M::userFunction( 'add_meta_box', array(
 			'times'  => 1,
 			'args'   => array(
 				'postexcerpt',
 				'Excerpt',
 				'ape_post_excerpt_meta_box',
-				array( 'post' ),
+				array( 'post', 'page' ),
 				'normal',
 				'high',
 			),
 		) );
 
-		M::wpPassthruFunction( '_x', array(
-			'times'  => 1,
-		) );
+		M::passthruFunction( '_x' );
 
 		ape_replace_postexcerpt_meta_box();
 	}
 
 	public function test_ape_replace_postexcerpt_meta_box_uses_filter() {
-		M::wpFunction( 'get_post_types', array(
-			'times'  => 1,
-			'args'   => array( null, 'names' ),
+		M::userFunction( 'get_post_types_by_support', array(
 			'return' => array( 'post', 'page' ),
 		) );
 
-		M::wpFunction( 'post_type_supports', array(
-			'times'  => 1,
-			'args'   => array( 'post', 'excerpt' ),
-			'return' => true,
+		M::userFunction( 'remove_meta_box', array(
+			'args'   => array( '*', array( 'post' ), '*' ),
 		) );
 
-		M::wpFunction( 'post_type_supports', array(
-			'times'  => 1,
-			'args'   => array( 'page', 'excerpt' ),
-			'return' => true,
+		M::userFunction( 'add_meta_box', array(
+			'args'   => array( '*', '*', '*', array( 'post' ), '*', '*' ),
 		) );
 
-		M::wpFunction( 'remove_meta_box', array(
-			'times'  => 1,
-			'args'   => array( 'postexcerpt', array( 'post' ), 'normal' ),
-		) );
-
-		M::wpFunction( 'add_meta_box', array(
-			'times'  => 1,
-			'args'   => array(
-				'postexcerpt',
-				'Excerpt',
-				'ape_post_excerpt_meta_box',
-				array( 'post' ),
-				'normal',
-				'high',
-			),
-		) );
-
-		M::wpPassthruFunction( '_x', array(
-			'times'  => 1,
-		) );
+		M::passthruFunction( '_x' );
 
 		M::onFilter( 'ape_post_types' )->with( array( 'post', 'page' ) )->reply( array( 'post' ) );
 
@@ -104,7 +64,7 @@ class AdvancedPostExcerptTest extends TestCase {
 		$post = new \stdClass;
 		$post->post_excerpt = 'foo bar';
 
-		M::wpFunction( 'wp_editor', array(
+		M::userFunction( 'wp_editor', array(
 			'times'  => 1,
 			'args'   => array( $post->post_excerpt, 'excerpt', M\Functions::type( 'array' ) ),
 		) );
@@ -116,7 +76,7 @@ class AdvancedPostExcerptTest extends TestCase {
 		$post = new \stdClass;
 		$post->post_excerpt = '<strong>foo bar</strong>';
 
-		M::wpFunction( 'wp_editor', array(
+		M::userFunction( 'wp_editor', array(
 			'times'  => 1,
 			'args'   => array( $post->post_excerpt, 'excerpt', M\Functions::type( 'array' ) ),
 		) );
@@ -128,7 +88,7 @@ class AdvancedPostExcerptTest extends TestCase {
 		$post = new \stdClass;
 		$post->post_excerpt = '';
 
-		M::wpFunction( 'wp_editor', array(
+		M::userFunction( 'wp_editor', array(
 			'times'  => 1,
 			'args'   => array( $post->post_excerpt, 'excerpt', array( 'foo', 'bar' ) ),
 		) );
@@ -141,4 +101,21 @@ class AdvancedPostExcerptTest extends TestCase {
 		ape_post_excerpt_meta_box( $post );
 	}
 
+	public function testApeRemoveAlignmentButtonsFromExcerpt() {
+		$buttons = array( 'bold', 'italic', 'alignleft', 'alignright', 'aligncenter', 'link' );
+
+		$this->assertEquals(
+			array( 'bold', 'italic', 'link' ),
+			ape_remove_alignment_buttons_from_excerpt( $buttons, 'excerpt' )
+		);
+	}
+
+	public function testApeRemoveAlignmentButtonsFromExcerptVerifiesId() {
+		$buttons = array( 'bold', 'italic', 'alignleft', 'alignright', 'aligncenter', 'link' );
+
+		$this->assertEquals(
+			$buttons,
+			ape_remove_alignment_buttons_from_excerpt( $buttons, 'not-the-excerpt' )
+		);
+	}
 }

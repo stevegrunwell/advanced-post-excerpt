@@ -6,6 +6,7 @@ module.exports = function(grunt) {
 				src: [
 					'languages/*',
 					'advanced-post-excerpt.php',
+					'CHANGELOG.md',
 					'LICENSE.md',
 					'readme.txt'
 				],
@@ -16,6 +17,7 @@ module.exports = function(grunt) {
 			target: {
 				options: {
 					domainPath: 'languages/',
+					exclude: ['dist/*', 'node_modules/*', 'plugin-repo-assets/*', 'tests/*', 'vendor/*'],
 					mainFile: 'advanced-post-excerpt.php',
 					type: 'wp-plugin',
 					updateTimestamp: false,

@@ -3,17 +3,20 @@ language: php
 php:
   - 5.6
   - 7.0
+  - 7.1
 
 env:
   global:
     - WP_VERSION=master
-    - WP_VERSION=4.4
+    - WP_VERSION=4.7
 
 before_script:
   - composer install --prefer-source
   - mkdir -p build/logs
 
 script:
+  - ./vendor/bin/wp-enforcer
+  - ./vendor/bin/phpcs --standard=phpcs.xml ./
   - ./vendor/bin/phpunit --coverage-clover build/logs/clover.xml
   - ./vendor/bin/test-reporter
 

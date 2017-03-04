@@ -3,7 +3,7 @@
  * Plugin Name: Advanced Post Excerpt
  * Plugin URI:  https://github.com/stevegrunwell/advanced-post-excerpt
  * Description: Replace the default Post Excerpt meta box with a superior editing experience.
- * Version:     0.1.0
+ * Version:     0.2.0
  * Author:      Steve Grunwell
  * Author URI:  https://stevegrunwell.com
  * License:     MIT
@@ -18,14 +18,7 @@
  * Replace the default 'postexcerpt' meta box.
  */
 function ape_replace_postexcerpt_meta_box() {
-	$post_types = array();
-
-	// Get all the post types that support excerpts.
-	foreach ( get_post_types( null, 'names' ) as $post_type ) {
-		if ( post_type_supports( $post_type, 'excerpt' ) ) {
-			$post_types[] = $post_type;
-		}
-	}
+	$post_types = get_post_types_by_support( 'excerpt' );
 
 	/**
 	 * Control the post types that should get the Advanced Post Excerpt meta box.
@@ -71,3 +64,23 @@ function ape_post_excerpt_meta_box( $post ) {
 
 	wp_editor( html_entity_decode( $post->post_excerpt ), 'excerpt', $settings );
 }
+
+/**
+ * Remove the alignment buttons from the post excerpt WYSIWYG.
+ *
+ * @param array  $buttons   An array of teenyMCE buttons.
+ * @param string $editor_id A unique identifier for the TinyMCE instance.
+ * @return array The $buttons array, minus alignment actions.
+ */
+function ape_remove_alignment_buttons_from_excerpt( $buttons, $editor_id ) {
+	if ( 'excerpt' === $editor_id ) {
+		$buttons  = array_values( array_diff( $buttons, array(
+			'alignleft',
+			'alignright',
+			'aligncenter',
+		) ) );
+	}
+
+	return $buttons;
+}
+add_filter( 'teeny_mce_buttons', 'ape_remove_alignment_buttons_from_excerpt', 10, 2 );

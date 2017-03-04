@@ -1,9 +1,9 @@
 === Advanced Post Excerpt ===
 Contributors:      stevegrunwell
 Tags:              excerpts, wysiwyg, tinymce
-Requires at least: 4.4
-Tested up to:      4.4.2
-Stable tag:        0.1.0
+Requires at least: 4.5
+Tested up to:      4.7.2
+Stable tag:        0.2.0
 License:           MIT
 License URI:       https://opensource.org/licenses/MIT
 
@@ -25,7 +25,7 @@ For complete details and/or to contribute to ongoing development, please [visit 
 2. Activate the plugin through the WordPress "Plugins" screen.
 
 
-== Frequently-Asked Questions ==
+== Frequently Asked Questions ==
 
 = Can I limit the post types that get the advanced editor? =
 
@@ -51,6 +51,9 @@ If, for instance, you only want the native "post" post type to use Advanced Post
 
 
 == Changelog ==
+
+= 0.2.0 =
+* Removed left, center, and right alignment buttons from the default post excerpt editor. If desired, [these can be restored with a single line of code](https://github.com/stevegrunwell/advanced-post-excerpt/releases/tag/v0.2.0).
 
 = 0.1.0 =
 * Initial public release.
