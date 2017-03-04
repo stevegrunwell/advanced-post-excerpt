@@ -12,6 +12,17 @@ use WP_Mock as M;
 
 class AdvancedPostExcerptTest extends TestCase {
 
+	public function test_ape_load_plugin_textdomain() {
+		M::userFunction( 'load_plugin_textdomain', array(
+			'times'  => 1,
+			'args'   => array( 'advanced-post-excerpt', false, '*' ),
+		) );
+
+		M::passthruFunction( 'plugin_basename' );
+
+		ape_load_plugin_textdomain();
+	}
+
 	public function test_ape_replace_postexcerpt_meta_box() {
 		M::userFunction( 'get_post_types_by_support', array(
 			'times'  => 1,

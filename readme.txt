@@ -3,7 +3,7 @@ Contributors:      stevegrunwell
 Tags:              excerpts, wysiwyg, tinymce
 Requires at least: 4.5
 Tested up to:      4.7.2
-Stable tag:        0.2.0
+Stable tag:        0.2.1
 License:           MIT
 License URI:       https://opensource.org/licenses/MIT
 
@@ -51,6 +51,9 @@ If, for instance, you only want the native "post" post type to use Advanced Post
 
 
 == Changelog ==
+
+= 0.2.1 =
+* Ensured that the plugin was localization-ready.
 
 = 0.2.0 =
 * Removed left, center, and right alignment buttons from the default post excerpt editor. If desired, [these can be restored with a single line of code](https://github.com/stevegrunwell/advanced-post-excerpt/releases/tag/v0.2.0).
