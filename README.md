@@ -8,7 +8,7 @@
 
 Advanced Post Excerpts is designed to change that, by giving your editors an easy, intuitive interface for writing great post excerpts.
 
-![A much better editing experience for post excerpts](assets/screenshot-1.png)
+![A much better editing experience for post excerpts](plugin-repo-assets/screenshot-1.png)
 
 
 ## Configuration
