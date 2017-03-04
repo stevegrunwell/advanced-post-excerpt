@@ -3,7 +3,7 @@
  * Plugin Name: Advanced Post Excerpt
  * Plugin URI:  https://github.com/stevegrunwell/advanced-post-excerpt
  * Description: Replace the default Post Excerpt meta box with a superior editing experience.
- * Version:     0.1.0
+ * Version:     0.2.0
  * Author:      Steve Grunwell
  * Author URI:  https://stevegrunwell.com
  * License:     MIT
