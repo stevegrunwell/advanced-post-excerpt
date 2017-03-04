@@ -8,6 +8,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased]
 
 * Fixed localization by adding missing [`load_plugin_textdomain()`](https://developer.wordpress.org/reference/functions/load_plugin_textdomain/) call ([#3]).
+* Repaired the `composer.json` file, adding additional information.
+
 
 ## [0.2.0] - 2017-03-04
 
