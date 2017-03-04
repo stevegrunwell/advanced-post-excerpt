@@ -71,3 +71,23 @@ function ape_post_excerpt_meta_box( $post ) {
 
 	wp_editor( html_entity_decode( $post->post_excerpt ), 'excerpt', $settings );
 }
+
+/**
+ * Remove the alignment buttons from the post excerpt WYSIWYG.
+ *
+ * @param array  $buttons   An array of teenyMCE buttons.
+ * @param string $editor_id A unique identifier for the TinyMCE instance.
+ * @return array The $buttons array, minus alignment actions.
+ */
+function ape_remove_alignment_buttons_from_excerpt( $buttons, $editor_id ) {
+	if ( 'excerpt' === $editor_id ) {
+		$buttons  = array_values( array_diff( $buttons, array(
+			'alignleft',
+			'alignright',
+			'aligncenter',
+		) ) );
+	}
+
+	return $buttons;
+}
+add_filter( 'teeny_mce_buttons', 'ape_remove_alignment_buttons_from_excerpt', 10, 2 );

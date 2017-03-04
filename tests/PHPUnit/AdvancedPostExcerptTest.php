@@ -141,4 +141,21 @@ class AdvancedPostExcerptTest extends TestCase {
 		ape_post_excerpt_meta_box( $post );
 	}
 
+	public function testApeRemoveAlignmentButtonsFromExcerpt() {
+		$buttons = array( 'bold', 'italic', 'alignleft', 'alignright', 'aligncenter', 'link' );
+
+		$this->assertEquals(
+			array( 'bold', 'italic', 'link' ),
+			ape_remove_alignment_buttons_from_excerpt( $buttons, 'excerpt' )
+		);
+	}
+
+	public function testApeRemoveAlignmentButtonsFromExcerptVerifiesId() {
+		$buttons = array( 'bold', 'italic', 'alignleft', 'alignright', 'aligncenter', 'link' );
+
+		$this->assertEquals(
+			$buttons,
+			ape_remove_alignment_buttons_from_excerpt( $buttons, 'not-the-excerpt' )
+		);
+	}
 }
