@@ -1,8 +1,8 @@
 === Advanced Post Excerpt ===
 Contributors:      stevegrunwell
 Tags:              excerpts, wysiwyg, tinymce
-Requires at least: 4.4
-Tested up to:      4.4.2
+Requires at least: 4.5
+Tested up to:      4.7.2
 Stable tag:        0.1.0
 License:           MIT
 License URI:       https://opensource.org/licenses/MIT
