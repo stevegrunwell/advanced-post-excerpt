@@ -1,26 +1,27 @@
 <?php
 /**
- * Bootstrap the test suite.
+ * PHPUnit bootstrap file.
  *
- * @package AdvancedPostExcerpt
- * @author  Steve Grunwell
+ * @package AmpedRadio\AmpedLoyalty
  */
 
-if ( ! defined( 'PROJECT' ) ) {
-	define( 'PROJECT', __DIR__ . '/../' );
+define( 'PROJECT_DIR', dirname( __DIR__ ) );
+
+$_tests_dir = getenv( 'WP_TESTS_DIR' );
+if ( ! $_tests_dir ) {
+	$_tests_dir = '/tmp/wordpress-tests-lib';
 }
 
-if ( ! file_exists( __DIR__ . '/../vendor/autoload.php' ) ) {
-	throw new PHPUnit_Framework_Exception(
-		'ERROR: You must use Composer to install the test suite\'s dependencies!' . PHP_EOL
-	);
-}
+// Give access to tests_add_filter() function.
+require_once $_tests_dir . '/includes/functions.php';
 
-require_once __DIR__ . '/../vendor/autoload.php';
-require_once __DIR__ . '/test-tools/TestCase.php';
+/**
+ * Manually load the plugin being tested.
+ */
+tests_add_filter( 'muplugins_loaded', function () {
+	require PROJECT_DIR . '/advanced-post-excerpt.php';
+} );
 
-WP_Mock::bootstrap();
-
-require_once PROJECT . 'advanced-post-excerpt.php';
-
-WP_Mock::tearDown();
+// Start up the WP testing environment.
+require $_tests_dir . '/includes/bootstrap.php';
+require_once PROJECT_DIR . '/vendor/autoload.php';
