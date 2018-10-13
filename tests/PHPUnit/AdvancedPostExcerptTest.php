@@ -23,54 +23,6 @@ class AdvancedPostExcerptTest extends TestCase {
 		ape_load_plugin_textdomain();
 	}
 
-	public function test_ape_replace_postexcerpt_meta_box() {
-		M::userFunction( 'get_post_types_by_support', array(
-			'times'  => 1,
-			'return' => array( 'post', 'page' ),
-		) );
-
-		M::userFunction( 'remove_meta_box', array(
-			'times'  => 1,
-			'args'   => array( 'postexcerpt', array( 'post', 'page' ), 'normal' ),
-		) );
-
-		M::userFunction( 'add_meta_box', array(
-			'times'  => 1,
-			'args'   => array(
-				'postexcerpt',
-				'Excerpt',
-				'ape_post_excerpt_meta_box',
-				array( 'post', 'page' ),
-				'normal',
-				'high',
-			),
-		) );
-
-		M::passthruFunction( '_x' );
-
-		ape_replace_postexcerpt_meta_box();
-	}
-
-	public function test_ape_replace_postexcerpt_meta_box_uses_filter() {
-		M::userFunction( 'get_post_types_by_support', array(
-			'return' => array( 'post', 'page' ),
-		) );
-
-		M::userFunction( 'remove_meta_box', array(
-			'args'   => array( '*', array( 'post' ), '*' ),
-		) );
-
-		M::userFunction( 'add_meta_box', array(
-			'args'   => array( '*', '*', '*', array( 'post' ), '*', '*' ),
-		) );
-
-		M::passthruFunction( '_x' );
-
-		M::onFilter( 'ape_post_types' )->with( array( 'post', 'page' ) )->reply( array( 'post' ) );
-
-		ape_replace_postexcerpt_meta_box();
-	}
-
 	public function test_ape_post_excerpt_meta_box() {
 		$post = new \stdClass;
 		$post->post_excerpt = 'foo bar';
