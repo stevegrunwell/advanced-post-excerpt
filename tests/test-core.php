@@ -8,9 +8,12 @@
 
 namespace Tests;
 
+use SteveGrunwell\PHPUnit_Markup_Assertions\MarkupAssertionsTrait;
 use WP_UnitTestCase;
 
 class CoreTest extends WP_UnitTestCase {
+
+	use MarkupAssertionsTrait;
 
 	/**
 	 * @ticket https://github.com/stevegrunwell/advanced-post-excerpt/issues/3
@@ -61,11 +64,45 @@ class CoreTest extends WP_UnitTestCase {
 	}
 
 	public function test_render_meta_box() {
-		$this->markTestIncomplete();
+		$post = $this->factory()->post->create_and_get( [
+			'post_excerpt' => 'This is the post excerpt.',
+		] );
+
+		ob_start();
+		ape_post_excerpt_meta_box( $post );
+		$rendered = ob_get_clean();
+
+		$this->assertContainsSelector(
+			'textarea[class="wp-editor-area"][name="excerpt"]',
+			$rendered
+		);
+
+		$this->assertElementContains(
+			'This is the post excerpt.',
+			'textarea[name="excerpt"]',
+			$rendered,
+			'Expected to see the post excerpt populated by default.'
+		);
 	}
 
 	public function test_filters_editor_settings() {
-		$this->markTestIncomplete();
+		$post = $this->factory()->post->create_and_get();
+
+		add_filter( 'ape_editor_settings', function ( $settings ) {
+			$settings['textarea_name'] = 'some-other-name';
+
+			return $settings;
+		} );
+
+		ob_start();
+		ape_post_excerpt_meta_box( $post );
+		$rendered = ob_get_clean();
+
+		$this->assertContainsSelector(
+			'textarea[name="some-other-name"]',
+			$rendered,
+			'Expected custom settings to be applied.'
+		);
 	}
 
 	public function test_handles_html_entities() {
