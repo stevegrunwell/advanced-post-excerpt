@@ -47,13 +47,23 @@ class CoreTest extends WP_UnitTestCase {
 	 * @ticket https://github.com/stevegrunwell/advanced-post-excerpt/issues/2
 	 */
 	public function test_removes_alignment_buttons_from_excerpt() {
-		$this->markTestIncomplete();
+		$buttons = [ 'bold', 'italic', 'alignleft', 'alignright', 'aligncenter', 'link' ];
+
+		$this->assertSame(
+			[ 'bold', 'italic', 'link' ],
+			ape_remove_alignment_buttons_from_excerpt( $buttons, 'excerpt' )
+		);
 	}
 
 	/**
 	 * @ticket https://github.com/stevegrunwell/advanced-post-excerpt/issues/2
 	 */
 	public function test_does_only_removes_alignment_buttons_from_excerpt() {
-		$this->markTestIncomplete();
+		$buttons = [ 'bold', 'italic', 'alignleft', 'alignright', 'aligncenter', 'link' ];
+
+		$this->assertSame(
+			$buttons,
+			ape_remove_alignment_buttons_from_excerpt( $buttons, 'not-the-excerpt' )
+		);
 	}
 }
