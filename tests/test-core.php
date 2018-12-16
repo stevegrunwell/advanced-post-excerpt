@@ -19,7 +19,13 @@ class CoreTest extends WP_UnitTestCase {
 	 * @ticket https://github.com/stevegrunwell/advanced-post-excerpt/issues/3
 	 */
 	public function test_loads_plugin_textdomain() {
-		$this->markTestIncomplete();
+		global $wp_actions;
+
+		$wp_actions = [];
+
+		ape_load_plugin_textdomain();
+
+		$this->assertGreaterThan( 1, did_action( 'load_textdomain' ) );
 	}
 
 	public function test_replaces_default_post_excerpt_meta_box() {
