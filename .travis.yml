@@ -28,6 +28,10 @@ matrix:
     - name: Bleeding Edge
       php: 7.3
       env: WP_VERSION=trunk
+  exclude:
+    # WordPress < 5.0 doesn't officially support PHP 7.3
+    - php: 7.3
+      env: WP_VERSION=4.9.9
   allow_failures:
     - name: Bleeding Edge
       php: 7.3
