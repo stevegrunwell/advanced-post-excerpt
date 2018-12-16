@@ -58,10 +58,10 @@ install:
 
 script:
   - |
-    if [[ ${RUN_PHPCS} == 1 ]]; then
+    if [[ ${RUN_PHPCS} ]]; then
       ./vendor/bin/phpcs
     elif [[ ${RUN_CODE_COVERAGE} ]]; then
-      phpdbg -qrr -d memory_limit=-1 ./vendor/bin/phpunit -c phpunit.xml.dist --coverage-clover=build/logs/clover.xml --exclude-group=timeout
+      phpdbg -qrr ./vendor/bin/phpunit -c phpunit.xml.dist --coverage-clover=build/logs/clover.xml
     else
       WP_MULTISITE=0 ./vendor/bin/phpunit
       WP_MULTISITE=1 ./vendor/bin/phpunit
