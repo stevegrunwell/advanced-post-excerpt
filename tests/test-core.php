@@ -112,7 +112,19 @@ class CoreTest extends WP_UnitTestCase {
 	}
 
 	public function test_handles_html_entities() {
-		$this->markTestIncomplete();
+		$post = $this->factory()->post->create_and_get( [
+			'post_excerpt' => 'This is a &lt;strong&gt;string&lt;/strong&gt; with HTML entities.',
+		] );
+
+		ob_start();
+		ape_post_excerpt_meta_box( $post );
+		$rendered = ob_get_clean();
+
+		$this->assertContains(
+			'>This is a <strong>string</strong> with HTML entities.</textarea>',
+			$rendered,
+			'Expected HTML entities to be decoded.'
+		);
 	}
 
 	/**
