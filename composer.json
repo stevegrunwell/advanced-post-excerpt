@@ -14,7 +14,6 @@
         "issues": "https://github.com/stevegrunwell/advanced-post-excerpt/issues"
     },
     "require-dev": {
-        "codeclimate/php-test-reporter": "dev-master",
         "dealerdirect/phpcodesniffer-composer-installer": "^0.4.4",
         "phpunit/phpunit": "^6.5",
         "stevegrunwell/phpunit-markup-assertions": "^1.2",
