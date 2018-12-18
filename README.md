@@ -1,6 +1,7 @@
 # Advanced Post Excerpt
 
 [![Build Status](https://travis-ci.org/stevegrunwell/advanced-post-excerpt.svg?branch=master)](https://travis-ci.org/stevegrunwell/advanced-post-excerpt)
+[![Coverage Status](https://coveralls.io/repos/github/stevegrunwell/advanced-post-excerpt/badge.svg?branch=develop)](https://coveralls.io/github/stevegrunwell/advanced-post-excerpt)
 
 [WordPress post excerpts](https://codex.wordpress.org/Excerpt) can be a great way to hand-craft the summary of your content. Unfortunately, writing post excerpts isn't as nice of an experience as what you find elsewhere in WordPress. Want to include links in your excerpts, or bold some text? Hopefully you know some HTML!
 
