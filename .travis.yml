@@ -26,7 +26,7 @@ matrix:
       php: 7.2
       env: WP_VERSION=latest RUN_PHPCS=1
     - name: Code Coverage
-      php: 7.2
+      php: 7.1
       env: WP_VERSION=latest RUN_CODE_COVERAGE=1
     - name: Bleeding Edge
       php: nightly
