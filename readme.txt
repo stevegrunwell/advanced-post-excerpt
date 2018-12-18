@@ -2,6 +2,7 @@
 Contributors:      stevegrunwell
 Tags:              excerpts, wysiwyg, tinymce
 Requires at least: 4.5
+Requires PHP:      7.0
 Tested up to:      4.7.2
 Stable tag:        0.2.1
 License:           MIT
