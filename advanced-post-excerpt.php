@@ -18,7 +18,11 @@
  * Load the plugin textdomain.
  */
 function ape_load_plugin_textdomain() {
-	load_plugin_textdomain( 'advanced-post-excerpt', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
+	load_plugin_textdomain(
+		'advanced-post-excerpt',
+		false,
+		dirname( plugin_basename( __FILE__ ) ) . '/languages'
+	);
 }
 add_action( 'init', 'ape_load_plugin_textdomain' );
 
@@ -82,11 +86,9 @@ function ape_post_excerpt_meta_box( $post ) {
  */
 function ape_remove_alignment_buttons_from_excerpt( $buttons, $editor_id ) {
 	if ( 'excerpt' === $editor_id ) {
-		$buttons  = array_values( array_diff( $buttons, array(
-			'alignleft',
-			'alignright',
-			'aligncenter',
-		) ) );
+		$buttons = array_values(
+			array_diff( $buttons, [ 'alignleft', 'alignright', 'aligncenter' ] )
+		);
 	}
 
 	return $buttons;
