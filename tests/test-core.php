@@ -10,6 +10,12 @@ namespace Tests;
 
 use SteveGrunwell\PHPUnit_Markup_Assertions\MarkupAssertionsTrait;
 use WP_UnitTestCase;
+use function AdvancedPostExcerpt\{
+	load_textdomain,
+	replace_metabox,
+	render_metabox,
+	remove_alignment_buttons
+};
 
 class CoreTest extends WP_UnitTestCase {
 
@@ -23,13 +29,13 @@ class CoreTest extends WP_UnitTestCase {
 
 		$wp_actions = [];
 
-		ape_load_plugin_textdomain();
+		load_textdomain();
 
 		$this->assertGreaterThan( 1, did_action( 'load_textdomain' ) );
 	}
 
 	public function test_replaces_default_post_excerpt_meta_box() {
-		ape_replace_postexcerpt_meta_box();
+		replace_metabox();
 
 		$this->assertTrue(
 			$this->post_type_has_advanced_post_excerpt( 'post' ),
@@ -48,7 +54,7 @@ class CoreTest extends WP_UnitTestCase {
 	 *           ["user_request"]
 	 */
 	public function test_only_replaces_on_post_types_that_support_excerpts( $post_type ) {
-		ape_replace_postexcerpt_meta_box();
+		replace_metabox();
 
 		$this->assertFalse(
 			$this->post_type_has_advanced_post_excerpt( $post_type ),
@@ -61,7 +67,7 @@ class CoreTest extends WP_UnitTestCase {
 			return [ 'some-post-type' ];
 		} );
 
-		ape_replace_postexcerpt_meta_box();
+		replace_metabox();
 
 		$this->assertTrue(
 			$this->post_type_has_advanced_post_excerpt( 'some-post-type' ),
@@ -75,7 +81,7 @@ class CoreTest extends WP_UnitTestCase {
 		] );
 
 		ob_start();
-		ape_post_excerpt_meta_box( $post );
+		render_metabox( $post );
 		$rendered = ob_get_clean();
 
 		$this->assertContainsSelector(
@@ -101,7 +107,7 @@ class CoreTest extends WP_UnitTestCase {
 		} );
 
 		ob_start();
-		ape_post_excerpt_meta_box( $post );
+		render_metabox( $post );
 		$rendered = ob_get_clean();
 
 		$this->assertContainsSelector(
@@ -117,7 +123,7 @@ class CoreTest extends WP_UnitTestCase {
 		] );
 
 		ob_start();
-		ape_post_excerpt_meta_box( $post );
+		render_metabox( $post );
 		$rendered = ob_get_clean();
 
 		$this->assertContains(
@@ -135,19 +141,19 @@ class CoreTest extends WP_UnitTestCase {
 
 		$this->assertSame(
 			[ 'bold', 'italic', 'link' ],
-			ape_remove_alignment_buttons_from_excerpt( $buttons, 'excerpt' )
+			remove_alignment_buttons( $buttons, 'excerpt' )
 		);
 	}
 
 	/**
 	 * @ticket https://github.com/stevegrunwell/advanced-post-excerpt/issues/2
 	 */
-	public function test_does_only_removes_alignment_buttons_from_excerpt() {
+	public function test_only_removes_alignment_buttons_from_excerpt() {
 		$buttons = [ 'bold', 'italic', 'alignleft', 'alignright', 'aligncenter', 'link' ];
 
 		$this->assertSame(
 			$buttons,
-			ape_remove_alignment_buttons_from_excerpt( $buttons, 'not-the-excerpt' )
+			remove_alignment_buttons( $buttons, 'not-the-excerpt' )
 		);
 	}
 
@@ -167,7 +173,7 @@ class CoreTest extends WP_UnitTestCase {
 			&& $wp_meta_boxes[ $post_type ]['normal']['high']['postexcerpt'] === [
 				'id'       => 'postexcerpt',
 				'title'    => _x( 'Excerpt', 'meta box heading', 'advanced-post-excerpt' ),
-				'callback' => 'ape_post_excerpt_meta_box',
+				'callback' => 'AdvancedPostExcerpt\render_metabox',
 				'args'     => null,
 			];
 	}
