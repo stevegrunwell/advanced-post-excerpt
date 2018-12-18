@@ -14,22 +14,24 @@
  * @author  Steve Grunwell
  */
 
+namespace AdvancedPostExcerpt;
+
 /**
  * Load the plugin textdomain.
  */
-function ape_load_plugin_textdomain() {
+function load_textdomain() {
 	load_plugin_textdomain(
 		'advanced-post-excerpt',
 		false,
 		dirname( plugin_basename( __FILE__ ) ) . '/languages'
 	);
 }
-add_action( 'init', 'ape_load_plugin_textdomain' );
+add_action( 'init', __NAMESPACE__ . '\load_textdomain' );
 
 /**
  * Replace the default 'postexcerpt' meta box.
  */
-function ape_replace_postexcerpt_meta_box() {
+function replace_metabox() {
 	$post_types = get_post_types_by_support( 'excerpt' );
 
 	/**
@@ -46,20 +48,20 @@ function ape_replace_postexcerpt_meta_box() {
 	add_meta_box(
 		'postexcerpt',
 		_x( 'Excerpt', 'meta box heading', 'advanced-post-excerpt' ),
-		'ape_post_excerpt_meta_box',
+		__NAMESPACE__ . '\render_metabox',
 		$post_types,
 		'normal',
 		'high'
 	);
 }
-add_action( 'add_meta_boxes', 'ape_replace_postexcerpt_meta_box' );
+add_action( 'add_meta_boxes', __NAMESPACE__ . '\replace_metabox' );
 
 /**
  * Replace the meta box contents.
  *
  * @param WP_Post $post The current post object.
  */
-function ape_post_excerpt_meta_box( $post ) {
+function render_metabox( $post ) {
 	$settings = array(
 		'media_buttons' => false,
 		'teeny'         => true,
@@ -84,7 +86,7 @@ function ape_post_excerpt_meta_box( $post ) {
  * @param string $editor_id A unique identifier for the TinyMCE instance.
  * @return array The $buttons array, minus alignment actions.
  */
-function ape_remove_alignment_buttons_from_excerpt( $buttons, $editor_id ) {
+function remove_alignment_buttons( $buttons, $editor_id ) {
 	if ( 'excerpt' === $editor_id ) {
 		$buttons = array_values(
 			array_diff( $buttons, [ 'alignleft', 'alignright', 'aligncenter' ] )
@@ -93,4 +95,4 @@ function ape_remove_alignment_buttons_from_excerpt( $buttons, $editor_id ) {
 
 	return $buttons;
 }
-add_filter( 'teeny_mce_buttons', 'ape_remove_alignment_buttons_from_excerpt', 10, 2 );
+add_filter( 'teeny_mce_buttons', __NAMESPACE__ . '\remove_alignment_buttons', 10, 2 );
