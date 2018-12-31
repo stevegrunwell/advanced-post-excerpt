@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file, according t
 
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [1.0.0] - 2018-12-31
+
+* Added support for the WordPress block editor (a.k.a. Gutenberg) [[#10]).
+* Rewrite the plugin to use proper namespaces ([#9]).
+* Bump the minimum PHP version to PHP 7.0 ([#8]).
+* Rewrite the test suite using the WordPress core test suite ([#5]).
 
 ## [0.2.1] - 2017-03-04
 
@@ -34,9 +40,14 @@ remove_filter( 'teeny_mce_buttons', 'ape_remove_alignment_buttons_from_excerpt',
 
 
 [Unreleased]: https://github.com/stevegrunwell/advanced-post-excerpt/compare/master...develop
+[1.0.0]: https://github.com/stevegrunwell/advanced-post-excerpt/releases/tag/v1.0.0
 [0.2.1]: https://github.com/stevegrunwell/advanced-post-excerpt/releases/tag/v0.2.1
 [0.2.0]: https://github.com/stevegrunwell/advanced-post-excerpt/releases/tag/v0.2.0
 [0.1.0]: https://github.com/stevegrunwell/advanced-post-excerpt/releases/tag/v0.1.0
 [#1]: https://github.com/stevegrunwell/advanced-post-excerpt/issues/1
 [#2]: https://github.com/stevegrunwell/advanced-post-excerpt/issues/2
 [#3]: https://github.com/stevegrunwell/advanced-post-excerpt/issues/3
+[#5]: https://github.com/stevegrunwell/advanced-post-excerpt/pull/5
+[#8]: https://github.com/stevegrunwell/advanced-post-excerpt/pull/8
+[#9]: https://github.com/stevegrunwell/advanced-post-excerpt/pull/9
+[#10]: https://github.com/stevegrunwell/advanced-post-excerpt/pull/10
