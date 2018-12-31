@@ -6,7 +6,6 @@
     "authors": [
         {
             "name": "Steve Grunwell",
-            "email": "steve@stevegrunwell.com",
             "homepage": "https://stevegrunwell.com"
         }
     ],
@@ -15,16 +14,18 @@
         "issues": "https://github.com/stevegrunwell/advanced-post-excerpt/issues"
     },
     "require-dev": {
-        "stevegrunwell/wp-enforcer": "dev-master",
-        "10up/wp_mock": "1.0.x-dev",
-        "codeclimate/php-test-reporter": "dev-master"
+        "dealerdirect/phpcodesniffer-composer-installer": "^0.5",
+        "phpcompatibility/php-compatibility": "^9.1",
+        "phpunit/phpunit": "^6.5",
+        "stevegrunwell/phpunit-markup-assertions": "^1.2",
+        "wp-coding-standards/wpcs": "^1.0.0"
     },
-    "scripts": {
-        "post-install-cmd": [
-            "wp-enforcer"
-        ],
-        "post-update-cmd": [
-            "wp-enforcer"
-        ]
+    "config": {
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "optimize-autoloader": true,
+        "platform": {
+            "php": "7.2"
+        }
     }
 }

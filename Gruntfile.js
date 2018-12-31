@@ -4,6 +4,7 @@ module.exports = function(grunt) {
 		copy: {
 			main: {
 				src: [
+					'js/*',
 					'languages/*',
 					'advanced-post-excerpt.php',
 					'CHANGELOG.md',

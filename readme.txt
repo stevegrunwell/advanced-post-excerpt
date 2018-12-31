@@ -2,8 +2,9 @@
 Contributors:      stevegrunwell
 Tags:              excerpts, wysiwyg, tinymce
 Requires at least: 4.5
-Tested up to:      4.7.2
-Stable tag:        0.2.1
+Requires PHP:      7.0
+Tested up to:      5.0.2
+Stable tag:        1.0.0
 License:           MIT
 License URI:       https://opensource.org/licenses/MIT
 
@@ -44,6 +45,10 @@ If, for instance, you only want the native "post" post type to use Advanced Post
 	}
 	add_filter( 'ape_post_types', 'mytheme_restrict_ape_post_types' );
 
+= Will this work with the WordPress block editor (a.k.a. "Gutenberg")?
+
+Yes! As of version 1.0.0, Advanced Post Excerpt will continue to display the TinyMCE editor in a meta box at the bottom of the block editor. To avoid conflicts, the default "Post Excerpt" panel in the block editor's sidebar will automatically be removed.
+
 
 == Screenshots ==
 
@@ -51,6 +56,12 @@ If, for instance, you only want the native "post" post type to use Advanced Post
 
 
 == Changelog ==
+
+For a full list of changes, please [see the full changelog on GitHub](https://github.com/stevegrunwell/advanced-post-excerpt/blob/develop/CHANGELOG.md).
+
+= 1.0.0 =
+* Added compatibility with the WordPress block editor (a.k.a. "Gutenberg").
+* Bumped minimum PHP version to 7.0.
 
 = 0.2.1 =
 * Ensured that the plugin was localization-ready.
@@ -60,3 +71,8 @@ If, for instance, you only want the native "post" post type to use Advanced Post
 
 = 0.1.0 =
 * Initial public release.
+
+== Upgrade Notice ==
+
+= 1.0.0 =
+Adds Gutenberg support and raises the minimum PHP version to 7.0.
