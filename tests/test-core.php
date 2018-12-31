@@ -158,6 +158,17 @@ class CoreTest extends WP_UnitTestCase {
 	}
 
 	/**
+	 * @ticket https://github.com/stevegrunwell/advanced-post-excerpt/issues/4
+	 */
+	public function test_registers_block_editor_js() {
+		$this->assertFalse( wp_script_is( 'advanced-post-excerpt', 'enqueued' ) );
+
+		do_action( 'enqueue_block_editor_assets' );
+
+		$this->assertTrue( wp_script_is( 'advanced-post-excerpt', 'enqueued' ) );
+	}
+
+	/**
 	 * Determine if the given post type has the Advanced Post Excerpt.
 	 *
 	 * @global $wp_meta_boxes
@@ -174,7 +185,9 @@ class CoreTest extends WP_UnitTestCase {
 				'id'       => 'postexcerpt',
 				'title'    => _x( 'Excerpt', 'meta box heading', 'advanced-post-excerpt' ),
 				'callback' => 'AdvancedPostExcerpt\render_metabox',
-				'args'     => null,
+				'args'     => [
+					'__back_compat_meta_box' => false,
+				],
 			];
 	}
 }

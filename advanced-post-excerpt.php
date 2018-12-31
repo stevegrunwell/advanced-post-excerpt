@@ -51,7 +51,10 @@ function replace_metabox() {
 		__NAMESPACE__ . '\render_metabox',
 		$post_types,
 		'normal',
-		'high'
+		'high',
+		array(
+			'__back_compat_meta_box' => false,
+		)
 	);
 }
 add_action( 'add_meta_boxes', __NAMESPACE__ . '\replace_metabox' );
@@ -96,3 +99,15 @@ function remove_alignment_buttons( $buttons, $editor_id ) {
 	return $buttons;
 }
 add_filter( 'teeny_mce_buttons', __NAMESPACE__ . '\remove_alignment_buttons', 10, 2 );
+
+/**
+ * Register the script to remove the "Post Excerpt" panel from the block editor.
+ */
+function remove_panel_from_block_editor() {
+	wp_enqueue_script(
+		'advanced-post-excerpt',
+		plugins_url( 'js/advanced-post-excerpt.js', __FILE__ ),
+		array( 'wp-edit-post' )
+	);
+}
+add_action( 'enqueue_block_editor_assets', __NAMESPACE__ . '\remove_panel_from_block_editor' );
