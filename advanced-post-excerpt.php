@@ -16,6 +16,8 @@
 
 namespace AdvancedPostExcerpt;
 
+define( __NAMESPACE__ . '\PLUGIN_VERSION', '1.0.0' );
+
 /**
  * Load the plugin textdomain.
  */
@@ -107,7 +109,9 @@ function remove_panel_from_block_editor() {
 	wp_enqueue_script(
 		'advanced-post-excerpt',
 		plugins_url( 'js/advanced-post-excerpt.js', __FILE__ ),
-		array( 'wp-edit-post' )
+		array( 'wp-edit-post' ),
+		PLUGIN_VERSION,
+		true
 	);
 }
 add_action( 'enqueue_block_editor_assets', __NAMESPACE__ . '\remove_panel_from_block_editor' );
