@@ -18,7 +18,7 @@
         "phpcompatibility/php-compatibility": "^9.1",
         "phpunit/phpunit": "^6.5",
         "stevegrunwell/phpunit-markup-assertions": "^1.2",
-        "wp-coding-standards/wpcs": "^1.0.0"
+        "wp-coding-standards/wpcs": "^2.2.0"
     },
     "config": {
         "preferred-install": "dist",
