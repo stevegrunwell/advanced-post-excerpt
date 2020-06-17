@@ -20,10 +20,26 @@
         "stevegrunwell/phpunit-markup-assertions": "^1.2",
         "wp-coding-standards/wpcs": "^1.0.0"
     },
+    "scripts": {
+        "test": [
+            "@test:unit",
+            "@test:standards"
+        ],
+        "test:standards": [
+            "phpcs"
+        ],
+        "test:unit": [
+            "phpunit --testdox --colors=always"
+        ]
+    },
+    "scripts-descriptions": {
+        "test": "Run all unit tests and check coding standards.",
+        "test:standards": "Check coding standards.",
+        "test:unit": "Run the PHPUnit test suite."
+    },
     "config": {
         "preferred-install": "dist",
         "sort-packages": true,
-        "optimize-autoloader": true,
         "platform": {
             "php": "7.3"
         }
