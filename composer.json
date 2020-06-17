@@ -15,7 +15,7 @@
     },
     "require-dev": {
         "assertwell/wp-core-test-framework": "^0.1.1",
-        "dealerdirect/phpcodesniffer-composer-installer": "^0.5",
+        "dealerdirect/phpcodesniffer-composer-installer": "^0.6",
         "phpcompatibility/php-compatibility": "^9.1",
         "phpunit/phpunit": "^6.5",
         "stevegrunwell/phpunit-markup-assertions": "^1.2",
