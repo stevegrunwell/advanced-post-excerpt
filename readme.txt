@@ -3,7 +3,7 @@ Contributors:      stevegrunwell
 Tags:              excerpts, wysiwyg, tinymce
 Requires at least: 4.5
 Requires PHP:      7.0
-Tested up to:      5.0.2
+Tested up to:      5.4.2
 Stable tag:        1.0.0
 License:           MIT
 License URI:       https://opensource.org/licenses/MIT
