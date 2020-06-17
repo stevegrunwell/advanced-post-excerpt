@@ -4,9 +4,44 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "915eda278ad844d3653dedb0adbf061c",
+    "content-hash": "b6b8992020734d015c95f9d7e31cf048",
     "packages": [],
     "packages-dev": [
+        {
+            "name": "assertwell/wp-core-test-framework",
+            "version": "v0.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/assertwell/wp-core-test-framework.git",
+                "reference": "15c999bff1ac4eb4142b0baad99b53afd7a700f9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/assertwell/wp-core-test-framework/zipball/15c999bff1ac4eb4142b0baad99b53afd7a700f9",
+                "reference": "15c999bff1ac4eb4142b0baad99b53afd7a700f9",
+                "shasum": ""
+            },
+            "bin": [
+                "bin/install-wp-tests.sh"
+            ],
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Steve Grunwell",
+                    "homepage": "https://stevegrunwell.com"
+                }
+            ],
+            "description": "Streamline testing WordPress plugins and themes using the WordPress core test framework",
+            "keywords": [
+                "testing",
+                "wordpress"
+            ],
+            "time": "2020-03-26T18:08:14+00:00"
+        },
         {
             "name": "dealerdirect/phpcodesniffer-composer-installer",
             "version": "v0.5.0",
@@ -1059,6 +1094,7 @@
                 "mock",
                 "xunit"
             ],
+            "abandoned": true,
             "time": "2018-08-09T05:50:03+00:00"
         },
         {
@@ -1882,12 +1918,12 @@
             "version": "1.2.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards.git",
+                "url": "https://github.com/WordPress/WordPress-Coding-Standards.git",
                 "reference": "f328bcafd97377e8e5e5d7b244d5ddbf301a3a5c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WordPress-Coding-Standards/WordPress-Coding-Standards/zipball/f328bcafd97377e8e5e5d7b244d5ddbf301a3a5c",
+                "url": "https://api.github.com/repos/WordPress/WordPress-Coding-Standards/zipball/f328bcafd97377e8e5e5d7b244d5ddbf301a3a5c",
                 "reference": "f328bcafd97377e8e5e5d7b244d5ddbf301a3a5c",
                 "shasum": ""
             },
