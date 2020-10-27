@@ -4,21 +4,21 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b6b8992020734d015c95f9d7e31cf048",
+    "content-hash": "7857d500e61698043ec362be27314d2f",
     "packages": [],
     "packages-dev": [
         {
             "name": "assertwell/wp-core-test-framework",
-            "version": "v0.1.1",
+            "version": "v0.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/assertwell/wp-core-test-framework.git",
-                "reference": "15c999bff1ac4eb4142b0baad99b53afd7a700f9"
+                "reference": "405676b69043f8846c1bbfdcc0f9ae881c0dce36"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/assertwell/wp-core-test-framework/zipball/15c999bff1ac4eb4142b0baad99b53afd7a700f9",
-                "reference": "15c999bff1ac4eb4142b0baad99b53afd7a700f9",
+                "url": "https://api.github.com/repos/assertwell/wp-core-test-framework/zipball/405676b69043f8846c1bbfdcc0f9ae881c0dce36",
+                "reference": "405676b69043f8846c1bbfdcc0f9ae881c0dce36",
                 "shasum": ""
             },
             "bin": [
@@ -40,7 +40,7 @@
                 "testing",
                 "wordpress"
             ],
-            "time": "2020-03-26T18:08:14+00:00"
+            "time": "2020-10-26T16:34:37+00:00"
         },
         {
             "name": "dealerdirect/phpcodesniffer-composer-installer",
@@ -951,6 +951,7 @@
             "keywords": [
                 "tokenizer"
             ],
+            "abandoned": true,
             "time": "2017-11-27T05:48:46+00:00"
         },
         {
