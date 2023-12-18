@@ -7,13 +7,8 @@
 	convertWarningsToExceptions="true"
 	>
 	<testsuites>
-		<testsuite>
+		<testsuite name="Unit">
 			<directory prefix="test-" suffix=".php">tests/</directory>
 		</testsuite>
 	</testsuites>
-	<filter>
-        <whitelist>
-            <file>advanced-post-excerpt.php</file>
-        </whitelist>
-    </filter>
 </phpunit>

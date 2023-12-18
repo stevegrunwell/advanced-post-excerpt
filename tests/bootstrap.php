@@ -2,7 +2,7 @@
 /**
  * PHPUnit bootstrap file.
  *
- * @package AmpedRadio\AmpedLoyalty
+ * @package SteveGrunwell/AdvancedPostExcerpt
  */
 
 define( 'PROJECT_DIR', dirname( __DIR__ ) );

@@ -1,0 +1,69 @@
+name: Unit Tests
+
+on: [pull_request]
+
+jobs:
+  phpunit:
+    name: PHP ${{ matrix.php-version }}, WP ${{ matrix.wp-version }}${{ matrix.wp-multisite && ' (Multisite)'  }}
+    runs-on: ubuntu-latest
+    continue-on-error: ${{ matrix.experimental }}
+    strategy:
+      fail-fast: true
+      matrix:
+        php-version: ['7.0', '7.1', '7.2', '7.3', '7.4', '8.0', '8.1', '8.2', '8.3']
+        wp-version: [latest]
+        wp-multisite: [0]
+        experimental: [false]
+        include:
+          # Minimum versions
+          - php-version: '7.0'
+            wp-version: '4.5'
+
+          # Minimum versions (multisite)
+          - php-version: '7.0'
+            wp-version: '4.5'
+            wp-multisite: 1
+
+          # Latest (multisite)
+          - php-version: latest
+            wp-version: latest
+            wp-multisite: 1
+
+          # Bleeding edge
+          - php-version: nightly
+            wp-version: trunk
+            experimental: true
+
+          # Bleeding edge (multisite)
+          - php-version: nightly
+            wp-version: trunk
+            wp-multisite: 1
+            experimental: true
+
+    services:
+      mysql:
+        image: mysql:${{ (matrix.php-version < 7.4 && '5.7') || '8.0' }}
+        env:
+          MYSQL_ALLOW_EMPTY_PASSWORD: false
+        ports:
+          - 3306:3306
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=10s --health-retries=10
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php-version }}
+          coverage: none
+
+      - name: Install Composer dependencies
+        uses: ramsey/composer-install@v2
+
+      - name: Install WordPress
+        run: bash vendor/bin/install-wp-tests.sh wordpress_test root '' localhost ${{ matrix.wp-version }}
+
+      - name: Run test suite
+        run: WP_MULTISITE=${{ matrix.wp-multisite }} vendor/bin/phpunit --testdox
