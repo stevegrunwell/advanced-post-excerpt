@@ -2,8 +2,7 @@
 /**
  * Tests for the Advanced Post Excerpt plugin.
  *
- * @package AdvancedPostExcerpt
- * @author  Steve Grunwell
+ * @package SteveGrunwell/AdvancedPostExcerpt
  */
 
 namespace Tests;
@@ -126,7 +125,7 @@ class CoreTest extends WP_UnitTestCase {
 		render_metabox( $post );
 		$rendered = ob_get_clean();
 
-		$this->assertContains(
+		$this->assertStringContainsString(
 			'>This is a <strong>string</strong> with HTML entities.</textarea>',
 			$rendered,
 			'Expected HTML entities to be decoded.'

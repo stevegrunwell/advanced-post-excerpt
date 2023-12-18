@@ -1,4 +1,7 @@
+*.DS_Store
+.phpunit.result.cache
+.vscode
+composer.lock
 dist
 node_modules
 vendor
-*.DS_Store
