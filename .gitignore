@@ -1,4 +1,6 @@
+*.DS_Store
+.vscode
+composer.lock
 dist
 node_modules
 vendor
-*.DS_Store
